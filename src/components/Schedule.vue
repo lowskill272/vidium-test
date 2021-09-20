@@ -1,29 +1,32 @@
 <template>
   <div class="wrapper">
     <!--    <Swiper />-->
-    <div
-      class="episode"
-      :class="this.episodeState(episode)"
-      v-for="episode in episodes"
-      :key="episode.id"
-    >
-      <div class="border" v-show="this.episodeState(episode) === 'live'"></div>
-      <div class="left">
-        <div class="episode-time">
-          <div class="icon"></div>
-          <div class="value">{{ this.formatTime(episode) }}</div>
-        </div>
+    <div class="swiper-wrapper">
+      <div class="episode-wrapper"
+           v-for="episode in episodes"
+           :key="episode.id">
         <div
-          class="episode-live"
-          v-show="this.episodeState(episode) === 'live'"
+          class="episode" :class="this.episodeState(episode)"
         >
-          Эфир
+          <div class="border" v-show="this.episodeState(episode) === 'live'"></div>
+          <div class="left">
+            <div class="episode-time">
+              <div class="icon"></div>
+              <div class="value">{{ this.formatTime(episode) }}</div>
+            </div>
+            <div
+              class="episode-live"
+              v-show="this.episodeState(episode) === 'live'"
+            >
+              Эфир
+            </div>
+          </div>
+          <div class="right">
+            <div class="episode-title">{{ episode.lines.title }}</div>
+            <div class="episode-description">{{ episode.lines.description }}</div>
+            <div class="episode-speakers">{{ this.formatSpeakers(episode) }}</div>
+          </div>
         </div>
-      </div>
-      <div class="right">
-        <div class="episode-title">{{ episode.lines.title }}</div>
-        <div class="episode-description">{{ episode.lines.description }}</div>
-        <div class="episode-speakers">{{ this.formatSpeakers(episode) }}</div>
       </div>
     </div>
   </div>
@@ -231,29 +234,37 @@ $episode-min-height: 86px;
 }
 
 
-.wrapper {
+.swiper-wrapper {
   display: flex;
   align-items: flex-start;
   max-width: 100%;
-  overflow: hidden;
+  //overflow: hidden;
   margin: 0 auto;
+  padding: 0 100px;
   font-family: "Montserrat", sans-serif;
 
   .episode {
-    margin: 0 0.5rem;
     display: flex;
-    min-width: $episode-width;
+    width: $episode-width;
     min-height: $episode-min-height;
     background: #ffffff;
     box-sizing: border-box;
     border-radius: 10px;
 
-    &:hover {
-      .episode-description {
-        max-height: 999px;
-        padding: 1rem 0;
+    &-wrapper{
+      margin: 0 0.5rem;
+      padding: 1px;
+      z-index: 1;
+
+      &:hover {
+        .episode-description {
+          max-height: 999px;
+          padding: 1rem 0;
+        }
       }
     }
+
+
 
     &.previous {
       @include prevDefault;
