@@ -1,21 +1,21 @@
 <template>
   <div class="wrapper">
-    <SwiperItem/>
+    <SwiperItem />
   </div>
 </template>
 
 <script lang="ts">
-
 import SwiperItem from "@/components/SwiperItem.vue";
+import { Options, Vue } from "vue-class-component";
 
-export default {
-  name: "Swiper",
+@Options({
   components: {
-    SwiperItem
+    SwiperItem,
   },
-};
+})
+export default class Schedule extends Vue {
+  // data
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

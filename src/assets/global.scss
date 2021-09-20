@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 16rem;
+}
+
+p {
+  font-size: 17rem;
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 1.2px;
+  }
+}
