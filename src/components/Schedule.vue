@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <!--    <Swiper />-->
+        <Swiper />
     <div class="swiper-wrapper">
       <div class="episode-wrapper"
            v-for="episode in episodes"

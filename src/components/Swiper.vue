@@ -1,52 +1,34 @@
 <template>
-  <swiper
-    :modules="modules"
-    :slides-per-view="3"
-    :space-between="50"
-    navigation
-    :pagination="{ clickable: true }"
-    :scrollbar="{ draggable: true }"
-    @swiper="onSwiper"
-    @slideChange="onSlideChange"
-  >
-    <swiper-slide>Slide 1</swiper-slide>
-    <swiper-slide>Slide 2</swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
-    <swiper-slide>Slide 4</swiper-slide>
-    <swiper-slide>Slide 5</swiper-slide>
-    <swiper-slide>Slide 6</swiper-slide>
-    <swiper-slide>Slide 7</swiper-slide>
-  </swiper>
+  <div class="swiper">
+    <div class="slide">1</div>
+    <div class="slide">1</div>
+    <div class="slide">1</div>
+    <div class="slide">1</div>
+    <div class="slide">1</div>
+    <div class="slide">1</div>
+  </div>
 </template>
 
 <script lang="ts">
 
-import { Navigation, Pagination, Scrollbar, A11y } from "../../node_modules/swiper";
-import { Swiper, SwiperSlide } from "../../node_modules/swiper/vue"
-import 'swiper/swiper-bundle.css';
+import { Swiper, SwiperOptions } from "swiper";
+import "swiper/swiper-bundle.css";
 
 import { Options, Vue } from "vue-class-component";
 
 @Options({
   components: {
-    Swiper,
-    SwiperSlide,
+
   },
 })
 export default class Schedule extends Vue {
 
-  onSwiper = (swiper: typeof Swiper) => {
-    console.log(swiper);
-  };
-  onSlideChange = () => {
-    console.log('slide change');
+  swiperParams: SwiperOptions = {
+    slidesPerView: 3,
+    spaceBetween: 50,
   };
 
-  setup() {
-    return {
-      modules: [Navigation, Pagination, Scrollbar, A11y],
-    };
-  }
+  swiper = new Swiper(".swiper", this.swiperParams);
 }
 </script>
 
