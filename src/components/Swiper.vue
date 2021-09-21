@@ -1,35 +1,23 @@
 <template>
   <div class="swiper">
     <div class="slide">1</div>
-    <div class="slide">1</div>
-    <div class="slide">1</div>
-    <div class="slide">1</div>
-    <div class="slide">1</div>
-    <div class="slide">1</div>
+    <div class="slide">2</div>
+    <div class="slide">3</div>
+    <div class="slide">4</div>
+    <div class="slide">5</div>
+    <div class="slide">6</div>
   </div>
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue'
 
-import { Swiper, SwiperOptions } from "swiper";
-import "swiper/swiper-bundle.css";
+export default defineComponent({
+  props: {
+    swiperData: [],
 
-import { Options, Vue } from "vue-class-component";
-
-@Options({
-  components: {
-
-  },
+  }
 })
-export default class Schedule extends Vue {
-
-  swiperParams: SwiperOptions = {
-    slidesPerView: 3,
-    spaceBetween: 50,
-  };
-
-  swiper = new Swiper(".swiper", this.swiperParams);
-}
 </script>
 
 <style scoped lang="scss">
