@@ -1,18 +1,22 @@
 <template>
-  <div class="swiper">
-    <div class="slide">1</div>
-    <div class="slide">2</div>
-    <div class="slide">3</div>
-    <div class="slide">4</div>
-    <div class="slide">5</div>
-    <div class="slide">6</div>
+  <div class="wrapper">
+    <swiper-item
+      v-for="(item, index) in swiperData"
+      :key="index"
+      :item_data="item"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import SwiperItem from "@/components/SwiperItem.vue";
 
 export default defineComponent({
+  name: 'Swiper',
+  components: {
+    SwiperItem
+  },
   props: {
     swiperData: [],
 
@@ -21,8 +25,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.swiper {
-  width: 600px;
-  height: 300px;
+.wrapper{
+  display: flex;
 }
 </style>

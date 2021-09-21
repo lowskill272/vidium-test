@@ -1,34 +1,34 @@
 <template>
   <div class="wrapper">
-        <Swiper :swiper-data="episodes"/>
-    <div class="swiper-wrapper">
-      <div class="episode-wrapper"
-           v-for="episode in episodes"
-           :key="episode.id">
-        <div
-          class="episode" :class="this.episodeState(episode)"
-        >
-          <div class="border" v-show="this.episodeState(episode) === 'live'"></div>
-          <div class="left">
-            <div class="episode-time">
-              <div class="icon"></div>
-              <div class="value">{{ this.formatTime(episode) }}</div>
-            </div>
-            <div
-              class="episode-live"
-              v-show="this.episodeState(episode) === 'live'"
-            >
-              Эфир
-            </div>
-          </div>
-          <div class="right">
-            <div class="episode-title">{{ episode.lines.title }}</div>
-            <div class="episode-description">{{ episode.lines.description }}</div>
-            <div class="episode-speakers">{{ this.formatSpeakers(episode) }}</div>
-          </div>
-        </div>
-      </div>
-    </div>
+        <Swiper :swiper-data="[1,2,3,4,5]"/>
+<!--    <div class="swiper-wrapper">-->
+<!--      <div class="episode-wrapper"-->
+<!--           v-for="episode in episodes"-->
+<!--           :key="episode.id">-->
+<!--        <div-->
+<!--          class="episode" :class="this.episodeState(episode)"-->
+<!--        >-->
+<!--          <div class="border" v-show="this.episodeState(episode) === 'live'"></div>-->
+<!--          <div class="left">-->
+<!--            <div class="episode-time">-->
+<!--              <div class="icon"></div>-->
+<!--              <div class="value">{{ this.formatTime(episode) }}</div>-->
+<!--            </div>-->
+<!--            <div-->
+<!--              class="episode-live"-->
+<!--              v-show="this.episodeState(episode) === 'live'"-->
+<!--            >-->
+<!--              Эфир-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="right">-->
+<!--            <div class="episode-title">{{ episode.lines.title }}</div>-->
+<!--            <div class="episode-description">{{ episode.lines.description }}</div>-->
+<!--            <div class="episode-speakers">{{ this.formatSpeakers(episode) }}</div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
   <button class="test" @click="this.test()">Загрузить</button>
 </template>

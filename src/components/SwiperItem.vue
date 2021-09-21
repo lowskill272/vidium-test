@@ -1,16 +1,19 @@
 <template>
   <div class="wrapper">
-    <slot></slot>
+    {{item_data}}
   </div>
 </template>
 
 <script lang="ts">
-export default {
-  name: "SwiperItem",
-  data() {
-    return {};
+
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'SwiperItem',
+  props: {
+    item_data: []
   }
-};
+})
 </script>
 
 <style scoped>
