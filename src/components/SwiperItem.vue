@@ -17,5 +17,15 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+.wrapper{
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e5e5e5;
+  box-sizing: border-box;
+  border-radius: 10px;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
 </style>
