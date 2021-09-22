@@ -68,9 +68,7 @@ export default defineComponent({
     },
     mouseUp(e: MouseEvent) {
       this.isMouseDown = 0;
-      if (e.clientX - this.startSwipePosition >= 150) {
-        this.currentIndex = Math.round(this.currentIndex);
-      } else if (e.clientX - this.startSwipePosition <= -150) {
+      if (Math.abs(e.clientX - this.startSwipePosition) >= 150 && this.currentIndex < (this as any).swiperData.length - 1) {
         this.currentIndex = Math.round(this.currentIndex);
       } else {
         this.currentIndex = Math.round(this.startSwipeIndex);
