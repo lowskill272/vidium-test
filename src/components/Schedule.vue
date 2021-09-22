@@ -1,6 +1,9 @@
 <template>
   <div class="wrapper">
-        <Swiper :swiper-data="[1,2,3,4,5]"/>
+        <Swiper
+          :swiper-data="[1,2,3,4,5]"
+          :elemSize="{ width: 500 }"
+        />
 <!--    <div class="swiper-wrapper">-->
 <!--      <div class="episode-wrapper"-->
 <!--           v-for="episode in episodes"-->
