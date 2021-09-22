@@ -1,10 +1,10 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" :style="{ width: elemSize.width + 'px' }">
     <swiper-item
       v-for="(item, index) in swiperData"
       :key="index"
       :item_data="item"
-      :style="{ transform: 'translate(-' + 100 * currentIndex + '%)' }"
+      :style="{ transform: 'translate(-' + 100 * currentIndex + '%)', minWidth: elemSize.width + 'px' }"
       :class="{ swiping: isMouseDown }"
       @mousemove="mouseMove($event)"
       @mouseup="mouseUp($event)"
@@ -31,6 +31,12 @@ export default defineComponent({
         return ["Передан", "пустой", "массив"];
       },
     },
+    elemSize: {
+      type: Object,
+      default() {
+        return { width: 300 };
+      }
+    }
   },
   data() {
     return {
@@ -56,7 +62,7 @@ export default defineComponent({
     mouseMove(e: MouseEvent) {
       if (this.isMouseDown) {
         this.currentIndex =
-          this.startSwipeIndex + (this.startSwipePosition - e.clientX) / 300;
+          this.startSwipeIndex + (this.startSwipePosition - e.clientX) / (this as any).elemSize.width;
       }
       console.log("MouseMove: ", this.currentIndex);
     },
@@ -68,7 +74,7 @@ export default defineComponent({
     },
     mouseUp(e: MouseEvent) {
       this.isMouseDown = 0;
-      if (Math.abs(e.clientX - this.startSwipePosition) >= 150 && this.currentIndex < (this as any).swiperData.length - 1) {
+      if (Math.abs(e.clientX - this.startSwipePosition) >= (this as any).elemSize.width / 2 && this.currentIndex < (this as any).swiperData.length - 1) {
         this.currentIndex = Math.round(this.currentIndex);
       } else {
         this.currentIndex = Math.round(this.startSwipeIndex);
@@ -91,7 +97,7 @@ export default defineComponent({
 <style scoped lang="scss">
 .wrapper {
   display: flex;
-  width: 300px;
+  //width: 300px;
   overflow: hidden;
   margin: 0 auto;
 }
