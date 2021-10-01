@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    {{item_data}}
+    <slot></slot>
   </div>
 </template>
 
@@ -19,13 +19,14 @@ export default defineComponent({
 <style scoped>
 .wrapper{
   /*min-width: 300px;*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #e5e5e5;
-  box-sizing: border-box;
-  border-radius: 10px;
-  transition: transform 0.5s ease;
-  cursor: pointer;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*border: 1px solid #e5e5e5;*/
+  /*box-sizing: border-box;*/
+  /*border-radius: 10px;*/
+  /*transition: transform 0.5s ease;*/
+  /*cursor: pointer;*/
+  opacity: 0.5;
 }
 </style>

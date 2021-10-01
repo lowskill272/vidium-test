@@ -1,37 +1,41 @@
 <template>
   <div class="wrapper">
-        <Swiper
-          :swiper-data="[1,2,3,4,5]"
-          :elemSize="{ width: 500 }"
-        />
-<!--    <div class="swiper-wrapper">-->
-<!--      <div class="episode-wrapper"-->
-<!--           v-for="episode in episodes"-->
-<!--           :key="episode.id">-->
-<!--        <div-->
-<!--          class="episode" :class="this.episodeState(episode)"-->
-<!--        >-->
-<!--          <div class="border" v-show="this.episodeState(episode) === 'live'"></div>-->
-<!--          <div class="left">-->
-<!--            <div class="episode-time">-->
-<!--              <div class="icon"></div>-->
-<!--              <div class="value">{{ this.formatTime(episode) }}</div>-->
-<!--            </div>-->
-<!--            <div-->
-<!--              class="episode-live"-->
-<!--              v-show="this.episodeState(episode) === 'live'"-->
-<!--            >-->
-<!--              Эфир-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="right">-->
-<!--            <div class="episode-title">{{ episode.lines.title }}</div>-->
-<!--            <div class="episode-description">{{ episode.lines.description }}</div>-->
-<!--            <div class="episode-speakers">{{ this.formatSpeakers(episode) }}</div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
+    <Swiper
+      :slides-per-view="3"
+      :space-between="10"
+    >
+      <SwiperItem v-for="episode in episodes" :key="episode.id">
+        <div class="episode-wrapper">
+          <div class="episode" :class="this.episodeState(episode)">
+            <div
+              class="border"
+              v-show="this.episodeState(episode) === 'live'"
+            ></div>
+            <div class="left">
+              <div class="episode-time">
+                <div class="icon"></div>
+                <div class="value">{{ this.formatTime(episode) }}</div>
+              </div>
+              <div
+                class="episode-live"
+                v-show="this.episodeState(episode) === 'live'"
+              >
+                Эфир
+              </div>
+            </div>
+            <div class="right">
+              <div class="episode-title">{{ episode.lines.title }}</div>
+              <div class="episode-description">
+                {{ episode.lines.description }}
+              </div>
+              <div class="episode-speakers">
+                {{ this.formatSpeakers(episode) }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </SwiperItem>
+    </Swiper>
   </div>
   <button class="test" @click="this.test()">Загрузить</button>
 </template>
@@ -39,6 +43,7 @@
 <script lang="ts">
 import Swiper from "@/components/Swiper.vue";
 import { Options, Vue } from "vue-class-component";
+import SwiperItem from "@/components/SwiperItem.vue";
 
 type Episode = {
   id: number;
@@ -69,6 +74,7 @@ type Episode = {
 
 @Options({
   components: {
+    SwiperItem,
     Swiper,
   },
 })
@@ -236,28 +242,30 @@ $episode-min-height: 86px;
   }
 }
 
-
-.swiper-wrapper {
+.wrapper {
   display: flex;
   align-items: flex-start;
   max-width: 100%;
   //overflow: hidden;
-  margin: 0 auto;
-  padding: 0 100px;
+  //margin: 0 auto;
+  //padding: 0 100px;
   font-family: "Montserrat", sans-serif;
+  background-color: #f0f0f0;
+  height: 300px;
 
   .episode {
     display: flex;
-    width: $episode-width;
+    //width: $episode-width;
     min-height: $episode-min-height;
     background: #ffffff;
     box-sizing: border-box;
     border-radius: 10px;
 
-    &-wrapper{
-      margin: 0 0.5rem;
+    &-wrapper {
+      //margin: 0 0.5rem;
       padding: 1px;
       z-index: 1;
+      width: 100%;
 
       &:hover {
         .episode-description {
@@ -266,8 +274,6 @@ $episode-min-height: 86px;
         }
       }
     }
-
-
 
     &.previous {
       @include prevDefault;
@@ -363,7 +369,7 @@ $episode-min-height: 86px;
       line-height: 17px;
       letter-spacing: 0;
       text-align: left;
-      color: #9F9F9F;
+      color: #9f9f9f;
       padding-left: 6px;
       position: relative;
 
